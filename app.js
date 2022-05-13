@@ -2,7 +2,7 @@ const express = require('express')
 
 function isAuthorized(req,res, next) {
   const auth = req.headers.authorization;
-  if (auth === 'secretpasswordRuben') {
+  if (auth === 'secretpasswordRuben-') {
     next();
   } else {
     res.status(401);

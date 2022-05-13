@@ -5,7 +5,7 @@ http.get({
   hostname: 'localhost',
   path: '/users',
   headers: {
-    authorization: 'secretpasswordRuben'
+    authorization: 'secretpasswordRuben-'
   }
 }, (res) => {
   console.log("connected");
