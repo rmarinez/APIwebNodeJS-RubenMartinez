@@ -1,3 +1,4 @@
+
 const express = require('express')
 
 function isAuthorized(req,res, next) {
@@ -12,15 +13,15 @@ function isAuthorized(req,res, next) {
 
 const app = express()
 const port = 3000
+const { User } = require("./models"); 
+
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.get('/users', isAuthorized, (req,res) => {
-  res.json([{
-    id: 1,
-    name: 'User Userson'
-  }])
- })
+app.get('/users', isAuthorized, async (req,res) => {
+  const users = await User.findAll();
+  res.json(users);
+  })
 
 app.get('/products', (req, res) => {
   res.json([{
