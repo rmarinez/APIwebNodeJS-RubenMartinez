@@ -1,0 +1,21 @@
+-1)Expliqueu què fan els fitxers package.json i package-lock.json.:
+
+package.json:contiene todos los metadatos(datos) sobre del proyecto tal como descripción
+
+package-lock.json: es un archivo que se genera automáticamente cuando se instalan paquetes o dependencias en el proyecto
+
+
+-2)Expliqueu què és i com funciona la carpeta node_modules.:
+
+¿Què és? es un directorio que se crea en la carpeta raíz de nuestro proyecto cuando instalamos paquetes o dependencias mediante npm.
+
+¿Com funciona? cualquier paquete instalado se almacena en node_modules con una carpeta con el nombre del paquete, junto a todos sus ficheros necesarios y dependencias respectivas en su propio node_modules, y así sucesivamente.
+
+
+-3)Investigueu i expliqueu què són els paràmetres req, res i next:
+
+req: Este parámetro es la solicitud entrante. Contiene los encabezados de solicitud y la dirección URL de llamada.
+
+res: Este parámetro es una secuencia de respuesta. Use esta secuencia para escribir información como encabezados y datos que quiera devolver al cliente que realiza la llamada.
+
+next: Este parámetro indica que la solicitud es correcta y que está listo para procesarla. Si no se llama a next(), se detiene el procesamiento de la solicitud.

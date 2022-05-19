@@ -1,0 +1,44 @@
+-primero de todo es necesario crear el modelo para poder tener los datos en alguna tabla de la base de datos:
+
+npx sequelize-cli model:generate --name basketPlayers --attributes name:string,lastname:string,birth:date,team:string
+
+-Una vez hemos creado el modelo hacemos la migración para que se suba:
+
+npx sequelize-cli db:migrate
+
+-Cuando ya tengamos el modelo creamos el sedder para poder insertar datos:
+
+npx sequelize-cli seed:generate --name demo-basketplayers
+
+-una vez hemos insertado los datos, los subimos al modelo (tabla):
+
+npx sequelize-cli db:seed:all
+
+Cuando ya hemos hecho los pasos anteriores, continuamos con el código del app.js
+(hemos añadido para que pueda leer la base de datos de basketplayers y mostrarlo con la ruta: http://localhost:3000/basketplayers)
+
+const { basketPlayers } = require("./models"); 
+
+app.get('/basketplayers', isAuthorized, async (req,res) => {
+  const basketplayers = await basketPlayers.findAll();
+  res.json(basketplayers);
+  })
+
+
+-Una vez ya hemos podido visualizar los datos, tenemos que conseguir visualizar por consola un mensaje cada vez que se ejecute la visualización de la tabla.
+(Para esto hemos hecho una función en la cual tiene un console.log con el mensaje y un next() para marcar que la solicitud es correcta y que está listo para procesarla)
+
+var comentario = function (req, res, next) {
+  console.log("S'han demanat els jugadors el " + date.toLocaleDateString() + " a les " + date.getHours()+":"+date.getMinutes());
+  next();
+};
+
+-Para poder visualizar la función anterior, insertamos la siguiente línea de código
+(insertamos el nombre de variable que tenemos en el express().use y el nombre de la variable que hemos puesto dentro la función)
+
+app.use(comentario);
+
+
+
+
+
